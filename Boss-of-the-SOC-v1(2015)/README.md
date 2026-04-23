@@ -31,6 +31,25 @@ To find the IP address of this machine, I searched the Splunk logs using the hos
 I used the following query:
 ```spl
 index=botsv1 host=we8105desk | stats count by src_ip | sort - count
+```
+```bash
+screenshots/ipaddress.png
+```
+## Analysis:-
+- After running the query, 192.168.250.100 appeared 53,106 times, which is the highest among all IP addresses, while the other IPs appeared only a few times.
+- The IP address with the highest count is considered the main IP of the machine because a system usually communicates using its assigned IP address for most of its activity. 
+- The other IP addresses generally represent broadcast traffic, localhost, temporary or rare connections, or background network noise.
+- Therefore, 192.168.250.100 is the most likely IPv4 address of we8105desk, as it has the highest number of occurrences in the logs, indicating that most of the system’s network activity originated from this IP.
+
+**Answer: 192.168.250.100**
+
+**201. Amongst the Suricata signatures that detected the Cerber malware, which one alerted the fewest number of times? Submit ONLY the signature ID value as the answer?**
+**Ans:** Since the question mentions Cerber ransomware, I searched the Suricata IDS logs in Splunk for any events related to Cerber.
+```spl
+index=botsv1 sourcetype=suricata "cerber"
+```
+
+
 
 
 
