@@ -33,7 +33,7 @@ I used the following query:
 index=botsv1 host=we8105desk | stats count by src_ip | sort - count
 ```
 ```bash
-screenshots/ipaddress.png
+screenshots/Ipaddress.png
 ```
 ## Analysis:-
 - After running the query, 192.168.250.100 appeared 53,106 times, which is the highest among all IP addresses, while the other IPs appeared only a few times.
