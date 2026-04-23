@@ -32,9 +32,7 @@ I used the following query:
 ```spl
 index=botsv1 host=we8105desk | stats count by src_ip | sort - count
 ```
-```bash
-screenshots/Ipaddress.png
-```
+![IP Address Analysis](screenshots/Ipaddress.png)
 ## Analysis:-
 - After running the query, 192.168.250.100 appeared 53,106 times, which is the highest among all IP addresses, while the other IPs appeared only a few times.
 - The IP address with the highest count is considered the main IP of the machine because a system usually communicates using its assigned IP address for most of its activity. 
