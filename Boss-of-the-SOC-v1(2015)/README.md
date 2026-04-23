@@ -60,6 +60,38 @@ index=botsv1 sourcetype=suricata "cerber" | stats count by alert.signature_id
 
 **Answer: 2816763**
 
+**202. What fully qualified domain name (FQDN) does the Cerber ransomware attempt to direct the user to at the end of its encryption phase?**
+**Ans** 
+## Analysis:-
+- To identify the domain (FQDN) used by the Cerber ransomware, I analyze DNS logs in Splunk.
+- DNS (Domain Name System) is responsible for converting domain names into IP addresses.
+- Since malware needs to connect to a domain before communicating with its server, DNS logs are very useful for detecting such activity.
+```spl
+index=botsv1 sourcetype=*dns "192.168.250.100" | search "query_type{}"=A |stats count by "query{}"
+```
+- I searched within botsv1 dataset.
+- Then focused on DNS logs using sourcetype=*DNS (* Stands for all).
+- Then used the infected IPV4 machine IP 192.168.250.100.
+- Then filtered A records (query_type{}=A) to get the domain lookup.
+- Finally searched with query using count by.
+![Domain 1](screenshots/Domain 1.png)
+![Domain 2](screenshots/Domain 2.png)
+
+## Findings:-
+- Total 234 DNS events found.
+- Found 2 suspicious domain one is solidaritedeproximite.org and another cerberhhyed5frqa.xmfir0.win
+- This domain cerberhhyed5frqa.xmfir0.win
+- It looks like it’s not human readable one looked very fishy as compared to another one. Unusual one.
+
+**Answer: cerberhhyed5frqa.xmfir0.win**
+
+
+
+
+
+
+
+
 
 
 
