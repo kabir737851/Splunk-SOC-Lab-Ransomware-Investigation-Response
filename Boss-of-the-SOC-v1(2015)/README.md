@@ -56,6 +56,7 @@ index=botsv1 sourcetype=suricata "cerber" | stats count by alert.signature_id
 ```
 - This query groups the events by signature id.
 - It counts how many times each one appears and sorts them from lowest to highest.
+![Signature Id Count](least_signature_id.png)
 
 **Answer: 2816763**
 
