@@ -127,6 +127,21 @@ index=botsv1 sourcetype=*dns "192.168.250.100" "query_type{}"=A |sort _time | ta
 
 **Answer: 4490**
 
+**205. What is the name of the USB key inserted by Bob Smith?**
+**Ans:**
+## Analysis:-
+- I searched the Windows Registry logs because they store detailed information about USB devices.
+- I used the keywords **USBSTOR to find USB storage devices and FRIENDLYNAME to get the device name in a readable format** 
+- This helped me quickly locate the USB device details.
+- From the results, I found the **friendly name** of the USB device **MIRANDA_PRI**
+```spl
+index=botsv1 host=we8105desk sourcetype="winregistry"  | search USBSTOR AND FRIENDLYNAME
+```
+![Friendly Name](screenshots/friendlyname.png)
+
+**Answer: USB device MIRANDA_PRI**
+
+
 
 
 
