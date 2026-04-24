@@ -204,7 +204,7 @@ index=botsv1 sourcetype=suricata dest_ip="192.168.250.100" "http.hostname"="soli
 **211. Now that you know the name of the ransomware's encryptor file, what obfuscation technique does it likely use?**
 **Ans:** The ransomware uses **steganography**, which means it hides its malicious code inside a normal-looking file so it doesn’t get noticed.
 
-📚 ## Lessons Learned
+## Lessons Learned
 
 **Early DNS pays off:** Filtering benign domains surfaces ransomware infra quickly.  
 > DNS timelines gave first touchpoints before heavy encryption noise appeared.
