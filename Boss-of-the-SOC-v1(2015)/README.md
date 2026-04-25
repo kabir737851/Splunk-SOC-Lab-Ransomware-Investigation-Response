@@ -206,6 +206,20 @@ index=botsv1 sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" Ev
 ```
 ![VB Script ](screenshots/vbscript.png)
 
+**209. The Cerber ransomware encrypts files located in Bob Smith's Windows profile. How many .txt files does it encrypt?**
+**Ans:**
+
+- I identified that Cerber ransomware encrypts files within Bob Smith’s user profile directory.
+- I filtered Sysmon logs to focus on file activity under: **C:\Users\bob.smith.WAYNECORPINC\\**
+- I specifically searched for `.txt` files within this directory.
+- Since multiple events can exist for the same file, I used **distinct count (dc)** to count only unique files.
+
+```spl
+index=botsv1 host=we8105desk sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"
+TargetFilename="C:\\Users\\bob.smith.WAYNECORPINC\\*.txt" | stats dc(TargetFilename) as distinct_txt
+```
+![encrypt](screenshots/encryptfile.png)
+
 **210. The malware downloads a file that contains the Cerber ransomware cryptor code. What is the name of that file?**
 **Ans:** 
 - To get the file name, we head back to Suricata and inspect the network packets.
